@@ -16,3 +16,4 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+ruby-2.0.0-p0
