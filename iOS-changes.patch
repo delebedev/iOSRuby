@@ -1,13 +1,27 @@
-From 810406e4d8d62327ef24f412bdb1eb6d6eeaa16c Mon Sep 17 00:00:00 2001
+From 3e66576642e330af5b9a60e2ad5e99a0f17ad6b8 Mon Sep 17 00:00:00 2001
 From: Denis Lebedev <d2.lebedev@gmail.com>
-Date: Sat, 23 Mar 2013 14:42:49 +0300
-Subject: [PATCH] Apply iOS changes
+Date: Sun, 24 Mar 2013 12:51:51 +0300
+Subject: [PATCH] Changes for building for iOS armv7
 
 ---
+ ext/extmk.rb         |    2 +-
  ext/psych/yaml/api.c |    2 +-
  gc.h                 |   10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ 3 files changed, 7 insertions(+), 7 deletions(-)
 
+diff --git a/ext/extmk.rb b/ext/extmk.rb
+index 4e5f64d..76b5ba3 100755
+--- a/ext/extmk.rb
++++ b/ext/extmk.rb
+@@ -558,7 +558,7 @@ unless $extlist.empty?
+       end
+       next
+     end
+-    $extinit << "    init(Init_#{File.basename i}, \"#{i}.so\");\n"
++    $extinit << "    init(Init_#{File.basename i}, \"#{i}.o\");\n"
+     $extobjs << format("ext/%s/%s.%s", t, File.basename(i), $LIBEXT)
+     built << t
+   end
 diff --git a/ext/psych/yaml/api.c b/ext/psych/yaml/api.c
 index 0c4732e..fa437a1 100644
 --- a/ext/psych/yaml/api.c
