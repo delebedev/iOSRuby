@@ -34,7 +34,7 @@
         VALUE r = rb_inspect(rb_gv_get("$:"));
         NSLog(@"PATH: %@", [NSString stringWithCString:StringValuePtr(r) encoding:NSUTF8StringEncoding]);
 		[self addLoadPath:[[self documentsPath] stringByAppendingPathComponent:@"lib"]];
-		
+		Init_bigdecimal();
 		NSString *path = [[NSBundle mainBundle] pathForResource:@"base64" ofType:@"rb"];
 		rb_require([path UTF8String]);
 		//rb_require("base64");
