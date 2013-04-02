@@ -1,0 +1,120 @@
+From bdf855793941dabaee23e9a025a3562c7acc1b1b Mon Sep 17 00:00:00 2001
+From: Denis Lebedev <d2.lebedev@gmail.com>
+Date: Sun, 24 Mar 2013 16:24:18 +0300
+Subject: [PATCH] Modify ext
+
+---
+ ext/digest/md5/md5init.c       |    4 +---
+ ext/digest/rmd160/rmd160init.c |    4 +---
+ ext/digest/sha1/sha1init.c     |    4 +---
+ ext/digest/sha2/sha2init.c     |    2 +-
+ ext/socket/rubysocket.h        |    4 ----
+ inits.c                        |    6 ++++++
+ 6 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/ext/digest/md5/md5init.c b/ext/digest/md5/md5init.c
+index 8667e48..414167c 100644
+--- a/ext/digest/md5/md5init.c
++++ b/ext/digest/md5/md5init.c
+@@ -28,11 +28,9 @@ Init_md5()
+ {
+     VALUE mDigest, cDigest_Base, cDigest_MD5;
+ 
+-    rb_require("digest");
++    //rb_require("digest");
+ 
+-#if 0
+     mDigest = rb_define_module("Digest"); /* let rdoc know */
+-#endif
+     mDigest = rb_path2class("Digest");
+     cDigest_Base = rb_path2class("Digest::Base");
+ 
+diff --git a/ext/digest/rmd160/rmd160init.c b/ext/digest/rmd160/rmd160init.c
+index 4522256..5d1e59c 100644
+--- a/ext/digest/rmd160/rmd160init.c
++++ b/ext/digest/rmd160/rmd160init.c
+@@ -28,11 +28,9 @@ Init_rmd160()
+ {
+     VALUE mDigest, cDigest_Base, cDigest_RMD160;
+ 
+-    rb_require("digest");
++    //rb_require("digest");
+ 
+-#if 0
+     mDigest = rb_define_module("Digest"); /* let rdoc know */
+-#endif
+     mDigest = rb_path2class("Digest");
+     cDigest_Base = rb_path2class("Digest::Base");
+ 
+diff --git a/ext/digest/sha1/sha1init.c b/ext/digest/sha1/sha1init.c
+index 04550ef..e7be8f0 100644
+--- a/ext/digest/sha1/sha1init.c
++++ b/ext/digest/sha1/sha1init.c
+@@ -28,11 +28,9 @@ Init_sha1()
+ {
+     VALUE mDigest, cDigest_Base, cDigest_SHA1;
+ 
+-    rb_require("digest");
++    //rb_require("digest");
+ 
+-#if 0
+     mDigest = rb_define_module("Digest"); /* let rdoc know */
+-#endif
+     mDigest = rb_path2class("Digest");
+     cDigest_Base = rb_path2class("Digest::Base");
+ 
+diff --git a/ext/digest/sha2/sha2init.c b/ext/digest/sha2/sha2init.c
+index 448823b..a4651d6 100644
+--- a/ext/digest/sha2/sha2init.c
++++ b/ext/digest/sha2/sha2init.c
+@@ -39,7 +39,7 @@ Init_sha2()
+ 
+     FOREACH_BITLEN(DECLARE_ALGO_CLASS)
+ 
+-    rb_require("digest");
++    //rb_require("digest");
+ 
+     id_metadata = rb_intern("metadata");
+ 
+diff --git a/ext/socket/rubysocket.h b/ext/socket/rubysocket.h
+index ff91f51..65286e3 100644
+--- a/ext/socket/rubysocket.h
++++ b/ext/socket/rubysocket.h
+@@ -63,18 +63,14 @@
+ #endif
+ #endif
+ 
+-#ifdef HAVE_IFADDRS_H
+ #include <ifaddrs.h>
+-#endif
+ #ifdef HAVE_SYS_IOCTL_H
+ #include <sys/ioctl.h>
+ #endif
+ #ifdef HAVE_SYS_SOCKIO_H
+ #include <sys/sockio.h>
+ #endif
+-#ifdef HAVE_NET_IF_H
+ #include <net/if.h>
+-#endif
+ 
+ #ifdef HAVE_SYS_PARAM_H
+ #include <sys/param.h>
+diff --git a/inits.c b/inits.c
+index eb679eb..d970b17 100644
+--- a/inits.c
++++ b/inits.c
+@@ -61,5 +61,11 @@ rb_call_inits(void)
+     CALL(Complex);
+     CALL(version);
+     CALL(vm_trace);
++    CALL(bigdecimal);
++	CALL(digest);
++    CALL(md5);
++    CALL(rmd160);
++    CALL(sha1);
++    CALL(sha2);
+ }
+ #undef CALL
+-- 
+1.7.10.2 (Apple Git-33)
+
