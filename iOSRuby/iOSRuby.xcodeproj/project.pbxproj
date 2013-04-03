@@ -26,7 +26,6 @@
 		1D23770116FF5E4C0022E081 /* RubyEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23770016FF5E4C0022E081 /* RubyEvaluator.m */; };
 		1D237CB016FF5F950022E081 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = 1D237CAF16FF5F950022E081 /* lib */; };
 		1D237CCC16FF5FEF0022E081 /* libruby-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D237CCB16FF5FEF0022E081 /* libruby-static.a */; };
-		1D51D7AA170496B4002366EF /* base64.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1D51D7A9170496B4002366EF /* base64.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +70,6 @@
 		1D237CD116FF6F0E0022E081 /* intern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intern.h; sourceTree = "<group>"; };
 		1D237CD216FF6F0E0022E081 /* missing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = missing.h; sourceTree = "<group>"; };
 		1D237CD316FF6F0E0022E081 /* ruby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ruby.h; sourceTree = "<group>"; };
-		1D51D7A9170496B4002366EF /* base64.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base64.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +177,6 @@
 		1D2376FE16FF5E310022E081 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				1D51D7A9170496B4002366EF /* base64.rb */,
 				1D237CCE16FF6F0E0022E081 /* include */,
 				1D237CCB16FF5FEF0022E081 /* libruby-static.a */,
 				1D237CAF16FF5F950022E081 /* lib */,
@@ -279,7 +276,6 @@
 				1D2376DB16FF5D1B0022E081 /* Default-568h@2x.png in Resources */,
 				1D2376FD16FF5D650022E081 /* MainViewController.xib in Resources */,
 				1D237CB016FF5F950022E081 /* lib in Resources */,
-				1D51D7AA170496B4002366EF /* base64.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

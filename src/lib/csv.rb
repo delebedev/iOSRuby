@@ -93,7 +93,7 @@
 require "forwardable"
 require "English"
 require "date"
-require "stringio"
+#require "stringio"
 
 #
 # This class provides a complete interface to CSV files and data.  It offers

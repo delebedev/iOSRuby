@@ -1,4 +1,4 @@
-require 'bigdecimal'
+#require 'bigdecimal'
 
 #
 # Solves a*x = b for x, using LU decomposition.

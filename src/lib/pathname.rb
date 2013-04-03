@@ -9,7 +9,7 @@
 # For documentation, see class Pathname.
 #
 
-require 'pathname.so'
+#require 'pathname.so'
 
 class Pathname
 

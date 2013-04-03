@@ -35,9 +35,34 @@
         NSLog(@"PATH: %@", [NSString stringWithCString:StringValuePtr(r) encoding:NSUTF8StringEncoding]);
 		[self addLoadPath:[[self documentsPath] stringByAppendingPathComponent:@"lib"]];
 		Init_bigdecimal();
-		NSString *path = [[NSBundle mainBundle] pathForResource:@"base64" ofType:@"rb"];
-		rb_require([path UTF8String]);
-		//rb_require("base64");
+		Init_coverage();
+		Init_dbm();
+		Init_date_core();
+		Init_digest();
+		Init_md5();
+		Init_rmd160();
+		Init_sha1();
+		Init_sha2();
+		Init_etc();
+		Init_fcntl();
+		Init_fiber();
+		Init_console();
+		Init_nonblock();
+		Init_wait();
+		Init_strscan();
+		Init_objspace();
+		Init_pathname();
+		Init_pty();
+		//Init_sdbm();
+		Init_stringio();
+		Init_socket();
+		
+//DO NOT WORDK
+		
+		//Init_parser();
+		//Init_generator();
+		
+		rb_require("base64");
 	
 #endif
     }

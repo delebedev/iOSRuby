@@ -1,4 +1,4 @@
-require 'digest.so'
+#require 'digest.o'
 
 module Digest
   def self.const_missing(name) # :nodoc:
