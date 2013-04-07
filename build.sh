@@ -41,3 +41,6 @@ ar r libruby-static.a ext/stringio/stringio.o
 ar r libruby-static.a ext/json/parser/parser.o
 ar r libruby-static.a ext/json/generator/generator.o
 
+
+
+ar r libruby-static.a enc/*.o

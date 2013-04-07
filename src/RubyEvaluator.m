@@ -56,12 +56,15 @@
 		//Init_sdbm();
 		Init_stringio();
 		Init_socket();
-		
 //DO NOT WORDK
 		
 		//Init_parser();
 		//Init_generator();
-		
+		Init_encdb();
+		Init_utf_16be();
+		Init_utf_16le();
+		Init_utf_32be();
+		Init_utf_32le();
 		rb_require("base64");
 	
 #endif
