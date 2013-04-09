@@ -24,6 +24,11 @@ static void catch_function(VALUE str) {
 	NSLog(@"%@", result);
 }
 
+static VALUE read_function(void) {
+	VALUE result = rb_str_new2("hello kitty");
+	return result;
+}
+
 @implementation RubyEvaluator
 
 + (instancetype)sharedInstance {
@@ -67,15 +72,13 @@ static void catch_function(VALUE str) {
 		//Init_socket();
 //DO NOT WORDK
 		
-		//Init_parser();
-		//Init_generator();
 		Init_encdb();
 		Init_utf_16be();
 		Init_utf_16le();
 		Init_utf_32be();
 		Init_utf_32le();
 		
-		init_captureoutput(catch_function);
+		init_captureoutput(catch_function, read_function);
 		
 #endif
     }
