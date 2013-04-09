@@ -13,6 +13,17 @@
 #define NS_STR(x) [NSString stringWithCString:StringValuePtr(x) encoding:NSUTF8StringEncoding]
 #define INSPECT_SCRIPT @"begin; (%@).inspect; rescue ScriptError, StandardError; 'Error: ' + ($! || 'exception raised'); end"
 
+typedef void(^outputBlock)(NSString *str);
+
+outputBlock evaluatorOutputBlock;
+
+static void catch_function(VALUE str) {
+	NSString *result = [NSString stringWithCString:StringValuePtr(str)
+										  encoding:NSUTF8StringEncoding];
+	evaluatorOutputBlock(result);
+	NSLog(@"%@", result);
+}
+
 @implementation RubyEvaluator
 
 + (instancetype)sharedInstance {
@@ -31,9 +42,7 @@
 		ruby_init();
 		ruby_script("embedded");
         ruby_init_loadpath();
-        VALUE r = rb_inspect(rb_gv_get("$:"));
-        NSLog(@"PATH: %@", [NSString stringWithCString:StringValuePtr(r) encoding:NSUTF8StringEncoding]);
-		[self addLoadPath:[[self documentsPath] stringByAppendingPathComponent:@"lib"]];
+ 		[self addLoadPath:[[self documentsPath] stringByAppendingPathComponent:@"lib"]];
 		Init_bigdecimal();
 		Init_coverage();
 		Init_dbm();
@@ -55,7 +64,7 @@
 		Init_pty();
 		//Init_sdbm();
 		Init_stringio();
-		Init_socket();
+		//Init_socket();
 //DO NOT WORDK
 		
 		//Init_parser();
@@ -65,8 +74,9 @@
 		Init_utf_16le();
 		Init_utf_32be();
 		Init_utf_32le();
-		rb_require("base64");
-	
+		
+		init_captureoutput(catch_function);
+		
 #endif
     }
     return self;
@@ -77,14 +87,24 @@
 	return @"cannot eval on not TARGET_OS_IPHONE";
 #else
 	
+	__block NSMutableString *trace = [[NSMutableString alloc] init];
+	outputBlock block = ^ (NSString *result) {
+		[trace appendString:result];
+	};
+	evaluatorOutputBlock = block;
+	
 	VALUE obj;
 	int state;
 	obj = rb_eval_string_protect([[NSString stringWithFormat:INSPECT_SCRIPT, code] UTF8String],
 								 &state);
 	NSString *result;
 	if (state == 0) {
+		
 		result = [NSString stringWithCString:StringValuePtr(obj)
 									encoding:NSUTF8StringEncoding];
+		if (trace) {
+			result = [trace stringByAppendingString:result];
+		}
 	} else {
 		result = @"exception raised";
 		

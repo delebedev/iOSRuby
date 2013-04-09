@@ -1,0 +1,1 @@
+captureoutput.o: captureoutput.c captureoutput.h $(hdrdir)/ruby.h
